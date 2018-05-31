@@ -1,0 +1,8 @@
+<h1>Partidas</h1>
+
+{% for match in object_list %}
+    {{ match }}
+
+    {% empty %}
+    <span>Ainda não há partidas registradas!</span>
+{% endfor %}
