@@ -1,17 +1,22 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block head_title %}Partidas || {{ block.super}}{% endblock head_title %}
+{% block head_title %}Cadastro || {{ block.super}}{% endblock head_title %}
 
 {% block content %}
-    <h1>Cadastre-se</h1>
-
-    <form method="POST">
-        {% csrf_token %}
-        
-        <div class="col-md-6">
-            {{ form.as_p }}
-
-            <button class="btn btn-secondary" type="submit">Registrar</button>
+    <div class="create-form-container col-md-6 offset-md-3">
+        <div class="logo-image margin-top-small col-md-6 offset-md-3">
+            <img src="{% static 'hackthon.png' %}" alt="">
         </div>
-    </form>
+
+        <form class="margin-top-tiny" method="POST">
+            {% csrf_token %}
+            
+            <div class="">
+                {{ form.as_p }}
+    
+                <button class="btn btn-secondary" type="submit">Registrar</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}
