@@ -8,5 +8,15 @@ class PlayerForm(forms.ModelForm):
         fields = [
             'name',
             'email',
-            'robot_name'
+            'robot_name',
+            'contributor'
         ]
+        labels = {
+            'name': 'Nome',
+            'robot_name': 'Nome do robô',
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'robot_name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
