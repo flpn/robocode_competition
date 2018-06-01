@@ -1,8 +1,14 @@
-<h1>Partidas</h1>
+{% extends "base.html" %}
 
-{% for match in object_list %}
-    {{ match }}
+{% block head_title %}Partidas || {{ block.super}}{% endblock head_title %}
 
-    {% empty %}
-    <span>Ainda não há partidas registradas!</span>
-{% endfor %}
+{% block content %}
+    <h1>Partidas</h1>
+
+    {% for match in object_list %}
+        {{ match }}
+
+        {% empty %}
+        <span>Ainda não há partidas registradas!</span>
+    {% endfor %}
+{% endblock %}

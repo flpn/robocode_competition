@@ -1,1 +1,79 @@
-<h1>Home</h1>
+{% extends "base.html" %}
+{% load static %} 
+
+{% block head_title %}Home || {{ block.super}}{% endblock head_title %}
+
+{% block content %}
+
+<div class="row margin-top-small">
+    <div class="col-md-5 description">
+        <h3>O que é Robocode?</h3>
+        <span>
+            <p>Robocode é um jogo que tem como objetivo programar um robo para competir contra outros robôs numa arena.</p>
+            <p>Você pode <a target="blank" href="https://sourceforge.net/projects/robocode/">fazer o download</a> do Robocode para iniciar sua jornada.
+                Após o download e instalação você pode ver o <a target="blank" href="http://robowiki.net/wiki/Robocode/Getting_Started">tutorial de como batalhar</a>
+                e logo em seguida poderá <a target="blank" href="http://robowiki.net/wiki/Robocode/My_First_Robot">construir seu primeiro robô</a>.
+            </p>
+            <p>Após construir seu primeiro robô você poderá aprimorá-lo lendo a <a target="blank" href="http://robocode.sourceforge.net/docs/robocode/">documentação oficial</a> disponibilizada pelos desenvolvedores.</p>
+        </span>
+    </div>
+    <div class="col-md-6 offset-md-1 fill">
+        <img class="image-radius" src="{% static 'gif_robot.gif' %}" alt="Arena de batalha">
+    </div>
+    </div>
+
+    <div class="row margin-top-small">
+        <div class="col-md-5">
+            <img src="{% static 'trophy.jpg' %}" alt="Trofeu">
+        </div>
+        <div class="col-md-6  offset-md-1 description">
+            <h3>Regras do campeonato</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Confrontos</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Fase de grupos</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Mata-mata</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Prêmio</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                        Cada confronto consistirá de batalhas 1 vs 1 no formato melhor de três, ou seja, o jogador que vencer dois confrontos 
+                        primeiro será o vencedor da partida.
+                    </div>
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        A competição iniciará com a fase de grupos, onde todos os participantes do grupo se enfrentam. Ao fim desta fase os competidores
+                        com melhor pontuação passam para a fase mata-mata.
+                    </div>
+                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                        Nesta fase os melhores robôs se enfretam em partidas classificatórias. A cada fase em que um competidor avança, o mesmo tem a oportunidade de
+                        melhorar o seu robô para a próxima fase.
+                    </div>
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                        O vencedor do torneio ganhará um magnífico prêmio. Além disso o competidor alcançará a glória e fama
+                        eterna entre seus colegas de trabalho!
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row margin-top-small margin-botttom-small">
+        <div class="col-md-12 description">
+            <h3>Como participar?</h3>
+            <span>
+               <p>Para participar da do Hackaton o competidor deve se <a href="{% url 'hotsite:create-player' %}">realizar a inscrição</a>
+                no site da competição até o dia 15/06/2018. Após o período de inscrição serão
+                realizado os chaveamentos entre os competidores. A competição tem data de início programada para o dia 02/07/2018.</p>
+            </span>
+        </div>
+        <div class="col-md-5  offset-md-2">
+
+        </div>
+    </div>
+{% endblock %}
+
+

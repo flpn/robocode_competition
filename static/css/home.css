@@ -1,0 +1,46 @@
+.description:hover {
+    box-sizing: border-box;
+    transform: scale(1.04);
+    transition: transform 0.5s linear, box-shadow 0.5s ease-in-out;
+    transition-delay: 0s, 1s;
+    
+}
+
+.margin-top-small {
+    margin-top: 50px;
+}
+
+.margin-botttom-small {
+    margin-bottom: 50px;
+}
+
+.size-image {
+    max-height: 10px;
+}
+
+.image-radius {
+    border-radius: 10px;
+}
+
+.image-radius-100 {
+    border-radius: 10px;
+}
+
+.list-group-item.active {
+    background-color: slategrey;
+    border-color:  rgb(74, 85, 95);
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+}

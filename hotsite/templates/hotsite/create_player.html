@@ -1,8 +1,17 @@
-<h1>Registre-se</h1>
+{% extends "base.html" %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
+{% block head_title %}Partidas || {{ block.super}}{% endblock head_title %}
 
-    <button type="submit">Registrar</button>
-</form>
+{% block content %}
+    <h1>Cadastre-se</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="col-md-6">
+            {{ form.as_p }}
+
+            <button class="btn btn-secondary" type="submit">Registrar</button>
+        </div>
+    </form>
+{% endblock %}
