@@ -1,0 +1,10 @@
+<div  id="match-list-category">
+	<ul>
+	{% for match in object_list %}
+		<li>{{ match }}</li>
+
+		{% empty %}
+		<span>Não há partidas cadastradas!</span>
+	{% endfor %}
+	</ul>
+</div>

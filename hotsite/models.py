@@ -18,12 +18,20 @@ class Player(models.Model):
 
 
 class Match(models.Model):
+    CATEGORY_CHOICES = (
+        ('groups', 'Fase de grupos'),
+        ('16', 'Oitavas de final'),
+        ('8', 'Quartas de final'),
+        ('4', 'Semi-final'),
+        ('2', 'Final'),)
+
     player_one = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='player_one')
     score_player_one = models.IntegerField()
     player_two = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='player_two')
     score_player_two = models.IntegerField()
-    winner = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='winner', null=True, blank=True)
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default='groups')
     date = models.DateField(null=True, blank=True)
+    winner = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='winner', null=True, blank=True)
 
     def __str__(self):
         return '{} x {}'.format(self.player_one.robot_name, self.player_two.robot_name)

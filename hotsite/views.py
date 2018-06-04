@@ -19,5 +19,24 @@ class CreatePlayerView(CreateView):
 
 
 class ListMatchesView(ListView):
+    template_name = 'hotsite/match_list.html'
+
     def get_queryset(self):
-        return Match.objects.all()
+    	return Match.objects.filter(category__iexact='groups')
+
+
+def async_match_list(request):
+	context = {}
+
+	context['object_list'] = Match.objects.filter(category__iexact='groups')
+
+	if request.method == 'GET':
+		category = request.GET.get('category')
+		
+		if category != None:
+			context['object_list'] = Match.objects.filter(category__iexact=category)
+
+	return render(request, 'hotsite/match_list_ajax.html', context)
+
+
+# ?
