@@ -13,6 +13,11 @@
     {% include "snippets/navbar.html" %}
 
     <div class="container">
+        <div id="success-message" class="alert alert-success margin-top-tiny" role="alert">
+          <h4 class="alert-heading">Usuário cadastrado com sucesso!</h4>
+          <p>Informações sobre o torneio serão enviadas para o seu email de cadastro.</p>
+        </div>  
+
         {% block content %}
         {% endblock %}
     </div>

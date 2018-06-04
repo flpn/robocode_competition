@@ -54,3 +54,7 @@
 .logo-image img {
     height: 100px;
 }
+
+#success-message {
+    display: none;
+}

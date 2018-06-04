@@ -9,10 +9,6 @@ class HomeView(TemplateView):
     template_name = 'hotsite/home.html'
 
 
-class SuccessRegisterView(DetailView):
-    model = Player
-
-
 class CreatePlayerView(CreateView):
     form_class = PlayerForm
     template_name = 'hotsite/create_player.html'
