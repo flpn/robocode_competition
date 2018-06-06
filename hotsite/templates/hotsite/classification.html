@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %}Partidas || {{ block.super}}{% endblock head_title %}
+
+{% block content %}
+  {% for group in object_list %}
+    {% if group.player_set.all %}
+      <div class="col-md-8 offset-md-2">
+        <h2>{{ group }}</h2>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Pontuação</th>
+              <th scope="col">Robô</th>
+              <th scope="col">Jogador</th>
+            </tr>
+            </thead>
+            <tbody>
+              {% for player in group.player_set.all %}
+                <tr>
+                  <th scope="row">{{ player.score }}</th>
+                  <td>{{ player.robot_name }}</td>
+                  <td>{{ player.name }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -14,6 +14,12 @@ class CreatePlayerView(CreateView):
     template_name = 'hotsite/create_player.html'
 
 
+class ListGroupView(ListView):
+    template_name = 'hotsite/classification.html'
+
+    def get_queryset(self):
+        return Group.objects.all()
+
 class ListMatchView(ListView):
     template_name = 'hotsite/match_list.html'
 
