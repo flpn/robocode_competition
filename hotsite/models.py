@@ -26,8 +26,8 @@ class Player(models.Model):
 
     group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=50)
-    email = models.EmailField()
-    robot_name = models.CharField(max_length=50)
+    email = models.EmailField(unique=True)
+    robot_name = models.CharField(max_length=50, unique=True)
     contributor = models.BooleanField(default=False, verbose_name='Desejo contribuir com o valor de R$ 5,00', choices=STATE_CHOICES)
     score = models.IntegerField(default=0)
 
