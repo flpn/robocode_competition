@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView, DetailView, ListView
 
-from .models import Player, Match
+from .models import Player, Match, Stage, Group
 from .forms import PlayerForm
 
 
@@ -14,25 +14,51 @@ class CreatePlayerView(CreateView):
     template_name = 'hotsite/create_player.html'
 
 
-class ListMatchesView(ListView):
+class ListMatchView(ListView):
     template_name = 'hotsite/match_list.html'
 
     def get_queryset(self):
-    	return Match.objects.filter(category__iexact='groups')
+    	return Stage.objects.filter(name__iexact='Fase de Grupos')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ListMatchView, self).get_context_data(*args, **kwargs)
+
+        return get_match_list_by_group_context(context)
 
 
-def async_match_list(request):
-	context = {}
+class ListMatchByStageView(ListView):
+    template_name = 'hotsite/match_list_ajax.html'
 
-	context['object_list'] = Match.objects.filter(category__iexact='groups')
+    def get_queryset(self):
+        stage_id = self.request.GET.get('stage_id')
+        stages_names = {
+            'groups': 'Fase de Grupos',
+            '16': 'Oitavas de Final',
+            '8': 'Quartas de Final',
+            '4': 'Semifinal',
+            '2': 'Final'
+        }
 
-	if request.method == 'GET':
-		category = request.GET.get('category')
-		
-		if category != None:
-			context['object_list'] = Match.objects.filter(category__iexact=category)
+        stage_name = stages_names[stage_id]
 
-	return render(request, 'hotsite/match_list_ajax.html', context)
+        if stage_name:
+            return Stage.objects.filter(name__iexact=stage_name)
+        else:
+            return Stage.objects.filter(name__iexact='Fase de Grupos')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ListMatchByStageView, self).get_context_data(*args, **kwargs)
+
+        return get_match_list_by_group_context(context)
 
 
-# ?
+def get_match_list_by_group_context(context):
+    groups = Group.objects.all()
+    matches_by_group = {}
+
+    for group in groups:
+        matches_by_group[group.name] = Match.objects.filter(player_one__group=group, stage__name='Fase de Grupos')
+
+    context['matches_by_group'] = matches_by_group
+
+    return context

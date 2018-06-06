@@ -3,7 +3,7 @@
     transform: scale(1.04);
     transition: transform 0.5s linear, box-shadow 0.5s ease-in-out;
     transition-delay: 0s, 1s;
-    
+
 }
 
 .margin-top-tiny {
@@ -57,4 +57,10 @@
 
 #success-message {
     display: none;
+}
+
+.player-score {
+  background-color: blue;
+  color: white;
+  border-radius: 10px;
 }

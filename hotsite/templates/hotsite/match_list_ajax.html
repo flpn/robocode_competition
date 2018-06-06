@@ -1,10 +1,75 @@
 <div  id="match-list-category">
-	<ul>
-	{% for match in object_list %}
-		<li>{{ match }}</li>
+	{% for stage in object_list %}
+		{% if stage.name == 'Fase de Grupos' %}
 
-		{% empty %}
-		<span>Não há partidas cadastradas!</span>
+		<div class="row offset-md-1">
+
+			{% for group, matches in matches_by_group.items %}
+				{% if matches %}
+						<div class="card text-center col-md-5" style="margin: 10px">
+							<div class="card-header">
+								{{ group }}
+							</div>
+
+							<ul class="list-group list-group-flush">
+							{% for match in matches %}
+								<li class="list-group-item">
+									<div class="row">
+
+										<div class="col-md-5">
+											<div class="row">
+												<div class="col-md-8">
+													{{ match.player_one.robot_name }}
+												</div>
+												<div class="col-md-4 player-score">
+													{{ match.score_player_one }}
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-2">
+											X
+										</div>
+
+										<div class="col-md-5">
+											<div class="row">
+												<div class="col-md-4">
+													{{ match.score_player_two }}
+												</div>
+												<div class="col-md-8">
+													{{ match.player_two.robot_name }}
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</li>
+							{% endfor %}
+							</ul>
+						</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+		{% else %}
+			<div class="row" style="width: 18rem;">
+				<div class="card text-center" style="width: 18rem;">
+					<div class="card-header">
+						{{ stage.name }}
+					</div>
+
+					<ul class="list-group list-group-flush">
+						{% for match in stage.match_set.all %}
+							<li class="list-group-item">{{ match }}</li>
+
+								{% empty %}
+								<span>Não há partidas cadastradas!</span>
+						{% endfor %}
+					</ul>
+
+				</div>
+			</div>
+
+		{% endif %}
 	{% endfor %}
-	</ul>
 </div>

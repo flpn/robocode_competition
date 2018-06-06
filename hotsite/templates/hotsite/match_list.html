@@ -9,10 +9,9 @@
             <div class="col-md-2">
                 <div class="list-group" id="list-tab" role="tablist">
                 <a class="categories list-group-item list-group-item-action active" id="groups" data-toggle="list" href="#list-group" role="tab" aria-controls="home">Fase de grupos</a>
-                <a class="categories list-group-item list-group-item-action" id="16" data-toggle="list" href="#list-16" role="tab" aria-controls="profile">Oitavas de final</a>
                 <a class="categories list-group-item list-group-item-action" id="8" data-toggle="list" href="#list-8" role="tab" aria-controls="8">Quartas de final</a>
                 <a class="categories list-group-item list-group-item-action" id="4" data-toggle="list" href="#list-4" role="tab" aria-controls="settings">Semi-final</a>
-                <a class="categories list-group-item list-group-item-action" id="2" data-toggle="list" href="#list-2" role="tab" aria-controls="final">Final</a>		
+                <a class="categories list-group-item list-group-item-action" id="2" data-toggle="list" href="#list-2" role="tab" aria-controls="final">Final</a>
                 </div>
             </div>
             <div class="col-md-10">
@@ -27,15 +26,15 @@
     	$('a').click(function() {
     		$.ajax({
     			type: 'GET',
-    			url: "{% url 'hotsite:async-match-list' %}",
+    			url: "{% url 'hotsite:list-matches-by-stage' %}",
     			data: {
-    				'category': this.id
+    				'stage_id': this.id
     			},
     			success: function(data) {
     				$('#match-list-category').html(data)
     			},
     			dataType: 'html'
-    		})    		
+    		})
     	})
     </script>
 {% endblock %}
