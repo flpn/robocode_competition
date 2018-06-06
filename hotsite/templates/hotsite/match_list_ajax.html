@@ -44,6 +44,9 @@
 
 									</div>
 								</li>
+
+								{% empty %}
+								<span>Não há partidas cadastradas!</span>
 							{% endfor %}
 							</ul>
 						</div>
@@ -52,18 +55,48 @@
 		</div>
 
 		{% else %}
-			<div class="row" style="width: 18rem;">
-				<div class="card text-center" style="width: 18rem;">
+			<div class="row">
+				<div class="card text-center col-md-6 offset-md-3">
 					<div class="card-header">
 						{{ stage.name }}
 					</div>
 
 					<ul class="list-group list-group-flush">
 						{% for match in stage.match_set.all %}
-							<li class="list-group-item">{{ match }}</li>
+							<li class="list-group-item">
+								<div class="row">
 
-								{% empty %}
-								<span>Não há partidas cadastradas!</span>
+									<div class="col-md-5">
+										<div class="row">
+											<div class="col-md-8">
+												{{ match.player_one.robot_name }}
+											</div>
+											<div class="col-md-4 player-score">
+												{{ match.score_player_one }}
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										X
+									</div>
+
+									<div class="col-md-5">
+										<div class="row">
+											<div class="col-md-4">
+												{{ match.score_player_two }}
+											</div>
+											<div class="col-md-8">
+												{{ match.player_two.robot_name }}
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</li>
+
+							{% empty %}
+							<span>Não há partidas cadastradas!</span>
 						{% endfor %}
 					</ul>
 

@@ -12,6 +12,7 @@
         <table class="table">
           <thead>
             <tr>
+              <th scope="col">Colocação</th>
               <th scope="col">Pontuação</th>
               <th scope="col">Robô</th>
               <th scope="col">Jogador</th>
@@ -20,7 +21,8 @@
             <tbody>
               {% for player in group.player_set.all %}
                 <tr>
-                  <th scope="row">{{ player.score }}</th>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <th>{{ player.score }}</th>
                   <td>{{ player.robot_name }}</td>
                   <td>{{ player.name }}</td>
                 </tr>
