@@ -23,7 +23,7 @@
     </div>
 
     <script type="text/javascript">
-    	$('a').click(function() {
+    	$('.categories').click(function() {
     		$.ajax({
     			type: 'GET',
     			url: "{% url 'hotsite:list-matches-by-stage' %}",

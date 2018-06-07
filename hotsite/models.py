@@ -35,7 +35,7 @@ class Player(models.Model):
         return '{} - {} - {}'.format(self.name, self.email, self.robot_name)
 
     def get_absolute_url(self):
-        return reverse('hotsite:home', kwargs={'pk': self.pk})
+        return reverse('hotsite:home', kwargs={})
 
 
 class Match(models.Model):
