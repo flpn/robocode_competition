@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import TemplateView, CreateView, DetailView, ListView
 
 from .models import Player, Match, Stage, Group
@@ -9,9 +10,10 @@ class HomeView(TemplateView):
     template_name = 'hotsite/home.html'
 
 
-class CreatePlayerView(CreateView):
+class CreatePlayerView(SuccessMessageMixin, CreateView):
     form_class = PlayerForm
     template_name = 'hotsite/create_player.html'
+    success_message = 'success'
 
 
 class ListGroupView(ListView):

@@ -18,6 +18,22 @@
     margin-bottom: 50px;
 }
 
+.padding-top-tiny {
+    padding-top: 10px;
+}
+
+.padding-top-small {
+    padding-top: 50px;
+}
+
+.padding-botttom-small {
+    padding-bottom: 50px;
+}
+
+.margin-all-tiny {
+  margin: 10px;
+}
+
 .size-image {
     max-height: 10px;
 }
@@ -49,18 +65,17 @@
     min-height: 100%;
 }
 
-/* ------------------------------------- */
-
 .logo-image img {
     height: 100px;
-}
-
-#success-message {
-    display: none;
 }
 
 .player-score {
   background-color: #4a555f;
   color: white;
   border-radius: 10px;
+}
+
+.card .card-header {
+  border-radius: 10px;
+  background-color: red;
 }

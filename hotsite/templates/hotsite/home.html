@@ -1,10 +1,21 @@
 {% extends "base.html" %}
-{% load static %} 
+{% load static %}
 
 {% block head_title %}Home || {{ block.super}}{% endblock head_title %}
 
 {% block content %}
-<div class="row margin-top-small">
+
+
+{% if messages %}
+  {% for message in messages %}
+    <div id="success-message" class="alert alert-success margin-top-tiny" role="alert">
+      <h4 class="alert-heading">Usuário cadastrado com sucesso!</h4>
+      <p>Informações sobre o torneio serão enviadas para o seu email de cadastro.</p>
+    </div>
+  {% endfor %}
+{% endif %}
+
+<div class="row padding-top-small">
     <div class="col-md-5 description">
         <h3>O que é Robocode?</h3>
         <span>
@@ -39,7 +50,7 @@
                 <div class="col-md-8">
                     <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                        Cada confronto consistirá de batalhas 1 vs 1 no formato melhor de três, ou seja, o jogador que vencer dois confrontos 
+                        Cada confronto consistirá de batalhas 1 vs 1 no formato melhor de três, ou seja, o jogador que vencer dois confrontos
                         primeiro será o vencedor da partida.
                     </div>
                     <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
@@ -60,7 +71,7 @@
         </div>
     </div>
 
-    <div class="row margin-top-small margin-botttom-small">
+    <div class="row margin-top-small padding-botttom-small">
         <div class="col-md-12 description">
             <h3>Como participar?</h3>
             <span>
@@ -74,5 +85,3 @@
         </div>
     </div>
 {% endblock %}
-
-

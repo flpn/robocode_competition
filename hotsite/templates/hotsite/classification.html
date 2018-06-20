@@ -9,7 +9,7 @@
       <div class="col-md-8 offset-md-2">
         <h2>{{ group }}</h2>
 
-        <table class="table">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">Colocação</th>
@@ -31,5 +31,9 @@
           </table>
         </div>
       {% endif %}
+
+      {% empty %}
+        <h3 class="margin-all-tiny">Não há grupos definidos no momento.</h3>
     {% endfor %}
+
 {% endblock %}

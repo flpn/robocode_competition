@@ -7,7 +7,7 @@
 			{% for group, matches in matches_by_group.items %}
 				{% if matches %}
 						<div class="card text-center col-md-5" style="margin: 10px">
-							<div class="card-header">
+							<div class="card-header" style="background-color: white">
 								{{ group }}
 							</div>
 
@@ -44,20 +44,28 @@
 
 									</div>
 								</li>
-
-								{% empty %}
-								<span>Não há partidas cadastradas!</span>
 							{% endfor %}
 							</ul>
 						</div>
 				{% endif %}
+
+				{% empty %}
+				<div class="col-md-1">
+
+				</div>
+				<div class="card text-center col-md-9" style="margin-top: 10px; margin-left:-10px">
+					<div class="card-header" style="background-color: white">
+						Fase de Grupos
+					</div>
+					<span class="margin-all-tiny">Não há partidas cadastradas!</span>
+				</div>
 			{% endfor %}
 		</div>
 
 		{% else %}
 			<div class="row">
-				<div class="card text-center col-md-6 offset-md-3">
-					<div class="card-header">
+				<div class="card text-center col-md-8 offset-md-2"  style="margin-top: 10px">
+					<div class="card-header" style="background-color: white">
 						{{ stage.name }}
 					</div>
 
@@ -96,7 +104,7 @@
 							</li>
 
 							{% empty %}
-							<span>Não há partidas cadastradas!</span>
+							<span style="margin: 10px;">Não há partidas cadastradas!</span>
 						{% endfor %}
 					</ul>
 
